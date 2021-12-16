@@ -1,7 +1,7 @@
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
-from flask import Flask, request, render_template
 import time
+import grayscale
 import os
 
 
@@ -10,8 +10,8 @@ class ChangeHandler(FileSystemEventHandler):
     def on_created(self, event):
         filepath = event.src_path
         filename = os.path.basename(filepath)
-
         print('%sを作成しました。' % filename)
+        grayscale.CleateGrayscale(filepath)
     # ファイルやフォルダが更新された場合
 
     def on_modified(self, event):
