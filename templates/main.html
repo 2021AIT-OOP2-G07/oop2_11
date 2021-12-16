@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+        <title>試験中</title>
+    
+        <!-- preload -->
+        <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" as="style" crossorigin="anonymous">
+        <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" as="script" crossorigin="anonymous">
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-upload">
+                    <button class="nav-upload active" aria-current="page" id="uploadBtn">アップロード</a>
+                </li>
+                <li class="nav-uploadList">
+                    <button class="nav-uploadList active" aria-current="page" id="uploadListBtn" href="">アップロードリスト</a>
+                </li>
+                <li class="nav-glayscale">
+                    <button class="nav-glayscale active" aria-current="page" id="grayscaleBtn">グレースケール</a>
+                </li>
+            </ul>
+        </nav>
+
+
+        <div id="uploadArea" style="display: block;" class="input-group">
+            <form>
+                <div class="form-group">
+                    <label for="inputFile">File input</label>
+                    <input type="file" class="form-control-file" accept=".jpg" id="inputFile">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+
+        <div id="uploadListArea" style="display: none;">
+            <!-- ここにアップロードリストの要素 -->
+        </div>
+
+        <div id="grayscaleArea" style="display: none;">
+            <!-- ここにグレースケールの要素 -->
+        </div>
+    </body>
+    <script defer src="{{ url_for('static', filename='web.js') }}"></script>
+</html>
