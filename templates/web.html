@@ -31,12 +31,10 @@
 
 
         <div id="uploadArea" style="display: block;" class="input-group">
-            <form>
-                <div class="form-group">
-                    <label for="inputFile">File input</label>
-                    <input type="file" class="form-control-file" accept=".jpg" id="inputFile">
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+            
+            <form method=post enctype=multipart/form-data>
+                <input type='file' name='file'>
+                <input type='submit' value='Upload'>
             </form>
         </div>
 
