@@ -1,35 +1,21 @@
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
-from flask import Flask, request, render_template
 import time
+import grayscale
 import os
+import waku
 
 
 class ChangeHandler(FileSystemEventHandler):
-    # ファイルやフォルダが作成された場合
+    # 画像追加処理
     def on_created(self, event):
+        # /.../.../.../filename.jpg
         filepath = event.src_path
+        # filename.jpg
         filename = os.path.basename(filepath)
-
-        print('%sを作成しました。' % filename)
-    # ファイルやフォルダが更新された場合
-
-    def on_modified(self, event):
-        filepath = event.src_path
-        filename = os.path.basename(filepath)
-        print('%sを変更しました。' % filename)
-
-    # ファイルやフォルダが移動された場合
-    def on_moved(self, event):
-        filepath = event.src_path
-        filename = os.path.basename(filepath)
-        print('%sを移動しました。' % filename)
-
-    # ファイルやフォルダが削除された場合
-    def on_deleted(self, event):
-        filepath = event.src_path
-        filename = os.path.basename(filepath)
-        print('%sを削除しました。' % filename)
+        print('%sが追加されました。' % filename)
+        grayscale.CleateGrayscale(filename)
+        waku.Createwaku(filename)
 
 
 # メイン処理
@@ -56,7 +42,7 @@ if __name__ == '__main__':
         while True:
             # 待機
             time.sleep(0.05)
-
+    # Ctrl-C をキャッチ
     except KeyboardInterrupt:
 
         # 監視の終了

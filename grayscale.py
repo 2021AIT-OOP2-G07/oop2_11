@@ -14,6 +14,4 @@ def CleateGrayscale(Jpg_pass):
 
     # 二値化(閾値100を超えた画素を255にする。)
     ret, im_th = cv2.threshold(im_gray, threshold, 255, cv2.THRESH_BINARY)
-
-
     cv2.imwrite("img/th/th_" + Jpg_pass, im_th)
