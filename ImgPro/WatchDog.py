@@ -1,9 +1,10 @@
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 import time
-import grayscale
+import Grayscale
 import os
-import waku
+import Waku2
+import CannyFilter
 
 
 class ChangeHandler(FileSystemEventHandler):
@@ -14,8 +15,9 @@ class ChangeHandler(FileSystemEventHandler):
         # filename.jpg
         filename = os.path.basename(filepath)
         print('%sが追加されました。' % filename)
-        grayscale.CleateGrayscale(filename)
-        waku.Createwaku(filename)
+        Grayscale.CleateGrayscale(filename)
+        CannyFilter.edge(filename)
+        Waku2.Createwaku(filename)
 
 
 # メイン処理
@@ -23,10 +25,8 @@ if __name__ == '__main__':
 
     # 起動ログ
     print('フォルダ・ファイル監視スクリプトを起動します。')
-
     # 現在のフォルダパスを取得する(プログラムが実行されているフォルダパス)
-    current_directory = os.path.dirname(os.path.abspath(__file__))
-
+    current_directory = "../img/original/"
     # インスタンス作成
     event_handler = ChangeHandler()
     observer = Observer()
